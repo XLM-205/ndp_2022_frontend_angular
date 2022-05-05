@@ -1,0 +1,8 @@
+//Entry point da cadeia de imports dos estilos CSS, padrão ITCSS, sem o PAGES pois cada componente tem um:
+
+@import './settings/main.scss',
+        './generic/main.scss',
+        './base/main.scss',
+        './objects/main.scss',
+        './components/main.scss',
+        './trumps/main.scss';
