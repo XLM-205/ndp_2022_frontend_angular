@@ -1,0 +1,35 @@
+<div class="ld-project-create-edit">
+    <ld-wrapper back="list">
+        <!-- <a href="projects-list.html" class="back-btn material-icons">keyboard_arrow_left</a> -->
+        <form class="left" (submit)="cadastrarEditar()" [formGroup]="createEditForm">
+            <h1 class="main-title">{{ title }}</h1>
+
+            <mat-form-field appearance="legacy">
+                <mat-label>Titulo</mat-label>
+                <input type="text" matInput formControlName="title">
+                <mat-error *ngIf="helpers.isInvalid(createEditForm, 'title', 'required')">{{ msg.required }}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+                <mat-label>Custo Total</mat-label>
+                <input type="text" matInput formControlName="totalCost" mask="separator.2" thousandSeparator=".">
+                <mat-error *ngIf="helpers.isInvalid(createEditForm, 'totalCost', 'required')">{{ msg.required }}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+                <mat-error *ngIf="helpers.isInvalid(createEditForm, 'description', 'required')">{{ msg.required }}</mat-error>
+            </mat-form-field>
+
+            <!-- <input required id="title" type="text" class="ld-input" placeholder="Título">
+            <input required id="totalCost" type="text" class="ld-input" placeholder="Custo Total">
+            <textarea required id="description" type="text-area" class="ld-input" placeholder="Descrição"></textarea> -->
+            <ld-button [text]="actionButtonText" enabled="{{createEditForm.valid}}"></ld-button>
+        </form>
+        <div class="right">
+            <img class="image" src="assets/image/bg-float-cubes.png"
+                alt="Fundo decorativo com 3 cubos sobre fundo arco-iris em degradé">
+        </div>
+    </ld-wrapper>
+</div>

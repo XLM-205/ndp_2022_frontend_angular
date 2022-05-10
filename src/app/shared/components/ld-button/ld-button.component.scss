@@ -10,6 +10,15 @@
     transition: background-color 0.5s;
     text-decoration: none;
 
+    &.-disabled {
+        background-color: var(--ld-color-gray);
+        transition: none;
+
+        &:hover {
+            background-color: var(--ld-color-gray);    
+        }
+    }
+
     &.-small {
         font-size: calc(var(--ld-font-size-base) + 4px);
         font-weight: 600;

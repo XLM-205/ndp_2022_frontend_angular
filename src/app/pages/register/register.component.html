@@ -1,47 +1,62 @@
-<div class="ld-login">
-    <div class="ld-wrapper">
-        <header class="ld-header">
-            <div class="wrapper">
-                <div class="logo-wrapper">
-                    <img class="image" src="assets/logo/devfreela.svg" alt="Logotipo do Dev Freela">
+<div class="ld-register">
+    <ld-wrapper>
+        <form class="left" (submit)="cadastrar()" [formGroup]="registerForm">
+            <h1 class="main-title">
+                <span class="up">Olá!</span>
+                <span class="down">Vamos criar o seu cadastro.</span>
+            </h1>
+
+            <div class="radio-buttons">
+                <h3 class="title">Qual o seu perfil?</h3>
+                <div class="buttons">
+                    <label class="ld-radio">
+                        Dev
+                        <input required name="role" type="radio" (click)="toggleRole('dev')">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="ld-radio">
+                        Cliente
+                        <input required name="role" type="radio" (click)="toggleRole('cliente')">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
+                <span class="role-invalid" *ngIf="helpers.isInvalid(registerForm, 'role', 'required')">Selecione um perfil</span>
             </div>
-        </header>
 
-        <main class="main-content">
-            <form class="left" (submit)="cadastrar()" action="javascript:void(0)">
+            <mat-form-field appearance="legacy">
+                <mat-label>Nome Completo</mat-label>
+                <input matInput formControlName="fullname">
+                <mat-error *ngIf="helpers.isInvalid(registerForm, 'fullname', 'required')">{{msg.required}}</mat-error>
+            </mat-form-field>
 
-                <h1 class="main-title">
-                    <span class="up">Olá!</span>
-                    <span class="down">Vamos criar o seu cadastro.</span>
-                </h1>
-                <div class="radio-buttons">
-                    <h3 class="title">Qual o seu perfil?</h3>
-                    <div class="buttons">
-                        <label class="ld-radio">
-                            Dev
-                            <input required name="role" type="radio">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="ld-radio">
-                            Cliente
-                            <input required name="role" type="radio">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                </div>
+            <mat-form-field appearance="legacy">
+                <mat-label>Data de Nascimento</mat-label>
+                <input type="date" matInput formControlName="birthdate">
+                <mat-error *ngIf="helpers.isInvalid(registerForm, 'birthdate', 'required')">{{msg.required}}</mat-error>
+            </mat-form-field>
 
-                <input required id="fullname" type="text" class="ld-input" placeholder="Nome Completo">
-                <input required id="birthdate" type="date" class="ld-input" placeholder="Data de Nascimento">
-                <input required id="email" type="email" class="ld-input" placeholder="Email">
-                <input required id="password" type="password" class="ld-input" placeholder="Senha">
-                <button type="submit" class="button ld-button">Continuar</button>
-            </form>
+            <mat-form-field appearance="legacy">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email">
+                <mat-error *ngIf="helpers.isInvalid(registerForm, 'email', 'required')">{{msg.required}}</mat-error>
+                <mat-error *ngIf="helpers.isInvalid(registerForm, 'email', 'email')">{{msg.email}}</mat-error>
+            </mat-form-field>
 
-            <div class="right">
-                <img class="image" src="assets/image/bg-cubes.png"
-                    alt="Fundo decorativo com 3 cubos sobre fundo arco-iris em degradente">
-            </div>
-        </main>
-    </div>
+            <mat-form-field appearance="legacy">
+                <mat-label>Senha</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error *ngIf="helpers.isInvalid(registerForm, 'password', 'required')">{{msg.required}}</mat-error>
+            </mat-form-field>
+
+            <!-- <input required id="birthdate" type="date" class="ld-input" placeholder="Data de Nascimento">
+            <input required id="email" type="email" class="ld-input" placeholder="Email">
+            <input required id="password" type="password" class="ld-input" placeholder="Senha"> -->
+            <ld-button text="Continuar" enabled={{registerForm.valid}}></ld-button>
+        </form>
+
+        <div class="right">
+            <img class="image" src="assets/image/bg-cubes.png"
+                 alt="Fundo decorativo com 3 cubos sobre fundo arco-iris em degradente">
+        </div>
+    </ld-wrapper>
 </div>

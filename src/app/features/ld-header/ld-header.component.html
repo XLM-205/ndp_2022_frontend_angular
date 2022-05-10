@@ -1,0 +1,29 @@
+<header class="ld-header">     
+    <!-- Versão simplificada -->
+    <div class="wrapper" *ngIf="!isUserLoggedIn()">
+        <ng-container *ngTemplateOutlet="logoTemplate"></ng-container>
+    </div>
+
+    <!-- Versão completa (Com user) -->
+    <div class="wrapper -has-user" *ngIf="isUserLoggedIn()">
+        <div><!-- Vazio para tabular o Logotipo corretamente --></div>
+        <ng-container *ngTemplateOutlet="logoTemplate"></ng-container>
+
+        <div class="user">
+            <div class="info">
+                <span class="name">{{ user.name }}</span>
+                <span class="role">{{ user.role }}</span>
+            </div>
+            <div class="photo-wrapper">
+                <img src="https://blogs.opovo.com.br/artesanatodamente/wp-content/uploads/sites/52/2018/08/Esqueceram-de-Mim-740x555.jpg" alt="Imagem de perfil do usuario">
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Template do Logotipo -->
+<ng-template #logoTemplate>
+    <div class="logo-wrapper">
+        <img class="image" src="assets/logo/devfreela.svg" alt="Logotipo do Dev Freela">
+    </div>
+</ng-template>
